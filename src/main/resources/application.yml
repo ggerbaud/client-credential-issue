@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: clientCredentialIssue
+  security:
+    authentication: cookie
+    oauth2:
+      clients:
+        default:
+          client-id: ${OAUTH_CLIENT_ID}
+          client-secret: ${OAUTH_CLIENT_SECRET}
+netty:
+  default:
+    allocator:
+      max-order: 3
