@@ -2,12 +2,21 @@ micronaut:
   application:
     name: clientCredentialIssue
   security:
-    authentication: cookie
+    intercept-url-map: 
+      -
+        pattern: /*
+        access:
+          - isAnonymous()
     oauth2:
       clients:
-        default:
-          client-id: ${OAUTH_CLIENT_ID}
-          client-secret: ${OAUTH_CLIENT_SECRET}
+        localauth:
+          client-id: 'XXX'
+          client-secret: 'XXX'
+          token:
+            url: "http://localhost:8080/token"
+            auth-method: client_secret_basic
+          client-credentials:
+            service-id-regex: "/hello"
 netty:
   default:
     allocator:
